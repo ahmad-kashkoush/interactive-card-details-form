@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+:root {
+  /* --active-input-border: hsl(249, 99%, 64%) to hsl(278, 94%, 30%) */
+  --input-error: hsl(0, 100%, 66%);
+
+  --white: hsl(0, 0%, 100%);
+  --Light-grayish-violet: hsl(270, 3%, 87%);
+  --Dark-grayish-violet: hsl(279, 6%, 55%);
+  --Very-dark-violet: hsl(278, 68%, 11%);
+  --font-size: 18px;
+  --font-family: "Space Grotesk", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  font-family: var(--font-family);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+  }
+}
+/* !!!!!!! */
+.graphic-wrapper {
+  background-image: url("images/bg-main-mobile.png");
+  height: 200px;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .graphic-wrapper {
+    background-image: url(images/bg-main-desktop.png);
+    /* min-height: 2700%; */
+    height: 100vh;
+    width: 29%;
+    background-color: red;
+    position: relative;
+  }
+}
+.card {
+  --horizontal-margin: 4%;
+  width: 274px;
+  height: 141px;
+  position: absolute;
+  border-radius: 5px;
+  background-size: cover;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+}
+.shiny-card {
+  background-image: url(images/bg-card-front.png);
+  top: 50%;
+  left: var(--horizontal-margin);
+  z-index: 1;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: auto 1fr auto;
+}
+@media (min-width: 768px) {
+  .shiny-card {
+    top: 26%;
+    left: auto;
+    right: -28%;
+  }
+}
+
+.shiny-card .balls {
+  grid-area: 1/1/2/4;
+  position: relative;
+  padding: 12px;
+  --size: 30px;
+}
+.shiny-card .balls::before {
+  content: "";
+  position: absolute;
+  height: var(--size);
+  width: var(--size);
+  background-color: var(--white);
+  border-radius: 50%;
+}
+.shiny-card .balls::after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  border: 1.5px solid var(--Light-grayish-violet);
+  width: calc(var(--size) / 3);
+  background: transparent;
+  height: calc(var(--size) / 3);
+  left: 51px;
+  top: 21px;
+}
+.shiny-card .card-id {
+  grid-area: 2/1/3/4;
+  color: var(--Light-grayish-violet);
+  font-size: 18px;
+  padding: 1rem;
+  letter-spacing: 0.16cap;
+}
+.shiny-card .card-owner-name {
+  padding: 0 1rem 0.5rem 1rem;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--Light-grayish-violet);
+}
+.shiny-card .card-expiry-date {
+  grid-area: 3/3/4/4;
+  font-size: 11px;
+  padding-right: 1rem;
+  color: var(--Light-grayish-violet);
+}
+
+.basic-card {
+  background-image: url("images/bg-card-back.png");
+  right: var(--horizontal-margin);
+  top: 10%;
+}
+.basic-card span {
+  color: var(--white);
+  position: absolute;
+  top: 46%;
+  right: 12%;
+}
+
+@media (min-width: 768px) {
+  .basic-card {
+    top: 51%;
+    left: auto;
+    right: -41%;
+  }
+}
+/* !!!!!!!!!!!!!! Form */
+
+form {
+  margin-top: 81px;
+  padding: 4%;
+}
+
+form > *,
+.completed {
+  max-width: 375px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 768px) {
+  form > *,
+  .completed {
+    max-width: 538px;
+  }
+}
+form > .input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+form .input-field label {
+  text-transform: uppercase;
+  letter-spacing: 0.15cap;
+  font-size: 12px;
+  color: var(--Very-dark-violet);
+}
+form .input-field input {
+  padding: 9px 6px;
+  width: 97%;
+  outline: none;
+  border: 1px solid var(--Light-grayish-violet);
+  border-radius: 7px;
+}
+form .row-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+@media (min-width: 768px) {
+  form {
+    flex: 1;
+    padding-top: 8rem;
+  }
+}
+form .row-wrapper .input-field-date {
+  flex-basis: 50%;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto;
+  column-gap: 10px;
+}
+
+form .input-field-date label[for="month"] {
+  grid-area: 1/1/2/3;
+  margin-bottom: 5px;
+}
+form .input-field-date input#month {
+}
+
+form .input-field-date input[name="year"] {
+}
+
+form .row-wrapper .input-field-cvc {
+  flex: 1;
+}
+form .row-wrapper .input-field-cvc label {
+  display: block;
+  margin-bottom: 5px;
+}
+.btn {
+  cursor: pointer;
+  display: block;
+  margin: 32px auto auto auto;
+  width: 88%;
+  padding: 15px;
+  font-size: 18px;
+  color: var(--Light-grayish-violet);
+  background: var(--Very-dark-violet);
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+.completed {
+  margin-top: 8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.completed .img-wrapper {
+}
+.completed .img-wrapper img {
+}
+.completed h2 {
+  color: var(--Very-dark-violet);
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: 0.3cap;
+}
+
+.completed span {
+  color: var(--Dark-grayish-violet);
+  font-size: 18px;
+}
+.completed .btn {
+}
+.hidden {
+  display: none;
+}
+@media (min-width: 768px) {
+  .completed {
+    margin-top: 13rem;
+    text-align: center;
+    display: flex;
+    margin-left: 10%;
+    flex-direction: column;
+    gap: 1rem;
+    /* align-self: center;*/
+  }
+}
