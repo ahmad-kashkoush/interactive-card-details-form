@@ -251,9 +251,6 @@ form .row-wrapper .input-field-cvc label {
 }
 .completed .btn {
 }
-.hidden {
-  display: none;
-}
 @media (min-width: 768px) {
   .completed {
     margin-top: 13rem;
@@ -264,4 +261,21 @@ form .row-wrapper .input-field-cvc label {
     gap: 1rem;
     /* align-self: center;*/
   }
+}
+/* todo input error class */
+form input.input-error {
+  border-color: var(--input-error);
+}
+form input:focus {
+  border-color: var(--Very-dark-violet);
+}
+form .error-message {
+  font-size: 8px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+  color: var(--input-error);
+}
+
+.hidden {
+  display: none;
 }
